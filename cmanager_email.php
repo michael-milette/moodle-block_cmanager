@@ -1,5 +1,5 @@
 <?php
-// --------------------------------------------------------- 
+// ---------------------------------------------------------
 // block_cmanager is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -16,7 +16,7 @@
 // COURSE REQUEST MANAGER BLOCK FOR MOODLE
 // by Kyle Goslin & Daniel McSweeney
 // Copyright 2012-2018 - Institute of Technology Blanchardstown.
-// --------------------------------------------------------- 
+// ---------------------------------------------------------
 /**
  * COURSE REQUEST MANAGER
   *
@@ -32,7 +32,7 @@ require_once('lib.php');
 global $DB;
 $senderemailaddress = $DB->get_field('block_cmanager_config', 'value', array("varname"=>'emailsender'), IGNORE_MULTIPLE);
 
-$emailsender = new stdClass();	
+$emailsender = new stdClass();
 $emailsender->id = 1;
 $emailsender->email = $senderemailaddress;
 $emailsender->maildisplay = true;
@@ -41,7 +41,7 @@ $emailsender->maildisplay = true;
 /**
  * Preform a search and replace for any value tags
  * which were entered by the admin.
- * 
+ *
  */
 function block_cmanager_convert_tags_to_values($email, $replacevalues) {
 
@@ -62,18 +62,18 @@ function block_cmanager_convert_tags_to_values($email, $replacevalues) {
 
     // Location in catalog: [loc]
     $location_added = str_replace('[loc]',  $replacevalues['[loc]'], $req_link_added);
-    
+
     $new_email = $location_added;
 
     return $new_email;
-	
+
 }
 
 
 /**
  * When a new course is approved email the user
- * 
- * 
+ *
+ *
  */
 function block_cmanager_new_course_approved_mail_user($uids, $current_mod_info) {
 
@@ -95,7 +95,7 @@ function block_cmanager_new_course_approved_mail_user($uids, $current_mod_info) 
             $attachname='', true, $replyto='', $replytoname='', $wordwrapwidth=79);
         }
 }
-	
+
 
 } //function
 
@@ -104,8 +104,8 @@ function block_cmanager_new_course_approved_mail_user($uids, $current_mod_info) 
 
 /**
  *   When a new course is approved, email the admin(s)
- * 
- * 
+ *
+ *
  */
 function block_cmanager_new_course_approved_mail_admin($current_mod_info) {
 
@@ -116,14 +116,14 @@ global $USER, $CFG, $emailsender, $senderemailaddress, $DB;
     $wherequery = "varname = 'admin_email'";
     $modrecords = $DB->get_recordset_select('block_cmanager_config', $wherequery);
 
-    $admin_email = $DB->get_field('block_cmanager_config', 'value',array('varname'=>'approvedadminemail') , IGNORE_MULTIPLE);	    
+    $admin_email = $DB->get_field('block_cmanager_config', 'value',array('varname'=>'approvedadminemail') , IGNORE_MULTIPLE);
 
     if (strlen(trim($admin_email)) > 0) {//are there characters in the field.
         $messagetext = block_cmanager_convert_tags_to_values($admin_email, $current_mod_info);
-		// Send an email to each admin		                               
-        foreach ($modrecords as $rec) {			                               
+        // Send an email to each admin
+        foreach ($modrecords as $rec) {
             $to = $rec->value;
-            $from = $emailsender;
+            $from = $emailsender->email;
             $subject = get_string('emailSubj_adminApproved','block_cmanager');
 
 
@@ -137,7 +137,7 @@ global $USER, $CFG, $emailsender, $senderemailaddress, $DB;
 
 /**
  *  Requesting a new module, email admin(s)
- * 
+ *
  */
 function block_cmanager_request_new_mod_email_admins($current_mod_info){
 
@@ -146,29 +146,29 @@ function block_cmanager_request_new_mod_email_admins($current_mod_info){
 
 
     // Get each admin email
-	$wherequery = "varname = 'admin_email'";
-    $modrecords = $DB->get_records_select('block_cmanager_config', $wherequery);									   
-    $admin_email = $DB->get_record('block_cmanager_config', array('varname'=>'requestnewmoduleadmin'));	
-	
+    $wherequery = "varname = 'admin_email'";
+    $modrecords = $DB->get_records_select('block_cmanager_config', $wherequery);
+    $admin_email = $DB->get_record('block_cmanager_config', array('varname'=>'requestnewmoduleadmin'));
+
     if (strlen(trim($admin_email->value)) > 0){//are there characters in the field.
         $messagetext = block_cmanager_convert_tags_to_values($admin_email->value, $current_mod_info);
-        // Send an email to each admin		                               
-        foreach ($modrecords as $rec) {			                               
-	        $to = $rec->value;
+        // Send an email to each admin
+        foreach ($modrecords as $rec) {
+            $to = $rec->value;
             //$from = $senderemailaddress;
             $subject = get_string('emailSubj_adminNewRequest','block_cmanager');
 
             block_cmanager_send_email_to_address($to, $subject, format_text($messagetext));
         }//end for
     }//end if
-	
+
 }//end function
 
 
 /**
  * Requesting a new module, email user
- * 
- * 
+ *
+ *
  */
 function block_cmanager_request_new_mod_email_user($uid, $current_mod_info){
 
@@ -176,7 +176,7 @@ function block_cmanager_request_new_mod_email_user($uid, $current_mod_info){
 
     $emailinguserobject = $DB->get_record('user', array('id'=>$uid));
     $subject = get_string('emailSubj_userNewRequest','block_cmanager');
-    $user_email_message = $DB->get_record('block_cmanager_config', array('varname'=>'requestnewmoduleuser'));	
+    $user_email_message = $DB->get_record('block_cmanager_config', array('varname'=>'requestnewmoduleuser'));
 
     if (strlen(trim($user_email_message->value)) > 0) {//are there characters in the field.
         $messagetext = block_cmanager_convert_tags_to_values($user_email_message->value, $current_mod_info);
@@ -187,32 +187,32 @@ function block_cmanager_request_new_mod_email_user($uid, $current_mod_info){
 
 
 /**
- * 
- * 
+ *
+ *
  *  Send an email out to an address external to anything
  *  to do with Moodle.
  * */
 function block_cmanager_send_email_to_Address($to, $subject, $text){
-	
-	global $emailsender, $CFG, $DB, $senderemailaddress;
-	
-	$emailinguserobject = new stdClass();	
-	$emailinguserobject->id = 1;
-	$emailinguserobject->email = $to;
-	$emailinguserobject->maildisplay = true;
-	$emailinguserobject->username = '';
-	$emailinguserobject->mailformat = 1;
-	$emailinguserobject->firstnamephonetic = '';
-	$emailinguserobject->lastnamephonetic = '';
-	$emailinguserobject->middlename = '';
-	$emailinguserobject->alternatename = '';
-	$emailinguserobject->firstname = get_string('admin');
-	$emailinguserobject->lastname = '';
+
+    global $emailsender, $CFG, $DB, $senderemailaddress;
+
+    $emailinguserobject = new stdClass();
+    $emailinguserobject->id = 1;
+    $emailinguserobject->email = $to;
+    $emailinguserobject->maildisplay = true;
+    $emailinguserobject->username = '';
+    $emailinguserobject->mailformat = 1;
+    $emailinguserobject->firstnamephonetic = '';
+    $emailinguserobject->lastnamephonetic = '';
+    $emailinguserobject->middlename = '';
+    $emailinguserobject->alternatename = '';
+    $emailinguserobject->firstname = get_string('admin');
+    $emailinguserobject->lastname = '';
 
 
-	email_to_user($emailinguserobject, $senderemailaddress, $subject, $text, $messagehtml='', $attachment='', 
-				  $attachname='', true, $replyto='', $replytoname='', $wordwrapwidth=79);
-	
+    email_to_user($emailinguserobject, $senderemailaddress, $subject, $text, $messagehtml='', $attachment='',
+                  $attachname='', true, $replyto='', $replytoname='', $wordwrapwidth=79);
+
 }
 
 
@@ -222,26 +222,25 @@ function block_cmanager_send_email_to_Address($to, $subject, $text){
 */
 function block_cmanager_email_comment_to_user($message, $uid, $mid, $current_mod_info){
 
-	global $USER, $CFG, $emailsender, $DB;
+    global $USER, $CFG, $emailsender, $DB;
 
     $emailinguserobject = $DB->get_record('user', array('id'=>$uid));
-    $commentForUser = $DB->get_field('block_cmanager_config', 'value',array('varname'=>'commentemailuser') , IGNORE_MULTIPLE);	    
-		
-	if (strlen(trim($commentForUser)) > 0) {//are there characters in the field.
-	    $additionalSignature = block_cmanager_convert_tags_to_values($commentForUser, $current_mod_info);
-		$from = $emailsender;
-		$subject = get_string('emailSubj_userNewComment','block_cmanager');
-		$messagetext = get_string('emailSubj_Comment','block_cmanager') . ":
-										
+    $commentForUser = $DB->get_field('block_cmanager_config', 'value',array('varname'=>'commentemailuser') , IGNORE_MULTIPLE);
+
+    if (strlen(trim($commentForUser)) > 0) {//are there characters in the field.
+        $additionalSignature = block_cmanager_convert_tags_to_values($commentForUser, $current_mod_info);
+        $from = $emailsender->email;
+        $subject = get_string('emailSubj_userNewComment','block_cmanager');
+        $messagetext = get_string('emailSubj_Comment','block_cmanager') . ":
+
 $message
-					
+
 $additionalSignature
 ";
+        email_to_user($emailinguserobject, $from, $subject, format_text($messagetext), $messagehtml='', $attachment='',
+                $attachname='', true, $replyto='', $replytoname='', $wordwrapwidth=79);
 
-	email_to_user($emailinguserobject, $from, $subject, format_text($messagetext), $messagehtml='', $attachment='',
-	              $attachname='', true, $replyto='', $replytoname='', $wordwrapwidth=79);
-
-		}//end if
+    }
 }
 
 
@@ -250,49 +249,37 @@ $additionalSignature
 */
 function block_cmanager_email_comment_to_admin($message, $mid, $current_mod_info) {
 
-	global $USER, $CFG, $emailsender, $DB;
+    global $USER, $CFG, $emailsender, $DB;
 
     // Get each admin email
- 	$adminEmailAddresses = $DB->get_recordset_select('block_cmanager_config', "varname = 'admin_email'");
-	// Comment for admin
-	$commentForAdmin = $DB->get_field('block_cmanager_config', 'value',array('varname'=>'commentemailadmin') , IGNORE_MULTIPLE);
-	
-    if (strlen(trim($commentForAdmin)) > 0) {//are there characters in the field.
-	    $additionalSignature = block_cmanager_convert_tags_to_values($commentForAdmin, $current_mod_info);
-		
-	    // Send an email to each admin		                               
-        foreach ($adminEmailAddresses as $rec) {			                               
-		    $to = $rec->value;
-	        $from = $emailsender;
-	    	$subject = get_string('emailSubj_adminNewComment','block_cmanager');
-		    $messagetext = get_string('emailSubj_Comment','block_cmanager')."
-										
+     $adminEmailAddresses = $DB->get_recordset_select('block_cmanager_config', "varname = 'admin_email'");
+    // Comment for admin
+    $commentForAdmin = $DB->get_field('block_cmanager_config', 'value',array('varname'=>'commentemailadmin') , IGNORE_MULTIPLE);
+
+    if (strlen(trim($commentForAdmin)) > 0) { // Are there characters in the field?
+        $additionalSignature = block_cmanager_convert_tags_to_values($commentForAdmin, $current_mod_info);
+
+        // Send an email to each admin
+        foreach ($adminEmailAddresses as $rec) {
+            $to = $rec->value;
+            $from = $emailsender->email;
+            $subject = get_string('emailSubj_adminNewComment','block_cmanager');
+            $messagetext = get_string('emailSubj_Comment','block_cmanager')."
+
 $message
-					
+
 $additionalSignature
 ";
-		
-		//$headers = get_string('emailSubj_From','block_cmanager') . $from;
-		
-		
-			 
-		block_cmanager_send_email_to_address($to, $subject, format_text($messagetext));
-	 }//end for
-		
-     }//end if
-
-}//end fuction
-		
-
+            //$headers = get_string('emailSubj_From','block_cmanager') . $from;
+            block_cmanager_send_email_to_address($to, $subject, format_text($messagetext));
+        }
+     }
+}
 
 /**
- * When a module has been denied, send an email
- * to the admin.
- * 
- * 
+ * When a module has been denied, send an email to the admin.
  */
 function block_cmanager_send_deny_email_admin($message, $mid, $current_mod_info){
-
 
     global $USER, $CFG, $emailsender, $DB;
 
@@ -302,19 +289,19 @@ function block_cmanager_send_deny_email_admin($message, $mid, $current_mod_info)
     $admin_email = $DB->get_record('block_cmanager_config', array('varname'=>'modulerequestdeniedadmin'));
     if (strlen(trim($admin_email->value)) > 0){//are there characters in the field.
 
-    // Send an email to each admin		                               
-    foreach ($modrecords as $rec) {			                                  		                               
+    // Send an email to each admin
+    foreach ($modrecords as $rec) {
         $to = $rec->value;
-          
-        $from = $emailsender;
+
+        $from = $emailsender->email;
         $subject = get_string('emailSubj_adminDeny','block_cmanager');
-            		
+
         $messagetext = $message;
         $messagetext .= '';
-        
+
         $messagetext .= block_cmanager_convert_tags_to_values($admin_email->value, $current_mod_info);
         block_cmanager_send_email_to_address($to, $subject, format_text($messagetext));
-    	
+
      }//end loop
 
     }//end if
@@ -327,7 +314,7 @@ function block_cmanager_send_deny_email_admin($message, $mid, $current_mod_info)
 /**
  * Once a module has been denied, send an email to
  * the user.
- * 
+ *
  */
 function block_cmanager_send_deny_email_user($message, $userid, $mid, $current_mod_info){
 
@@ -335,11 +322,11 @@ function block_cmanager_send_deny_email_user($message, $userid, $mid, $current_m
 
 
     $emailinguserobject = $DB->get_record('user', array('id'=>$userid));
-    $from = $emailsender;
+    $from = $emailsender->email;
     $subject = get_string('emailSubj_userDeny','block_cmanager');
-    $user_email = $DB->get_record('block_cmanager_config', array('varname'=>'modulerequestdenieduser'));	
+    $user_email = $DB->get_record('block_cmanager_config', array('varname'=>'modulerequestdenieduser'));
 
-    if (strlen(trim($user_email->value)) > 0) {//are there characters in the field.	
+    if (strlen(trim($user_email->value)) > 0) {//are there characters in the field.
         $messagetext = $message;
         $messagetext .= '';
         $messagetext .= block_cmanager_convert_tags_to_values($user_email->value, $current_mod_info);
@@ -353,12 +340,12 @@ function block_cmanager_send_deny_email_user($message, $userid, $mid, $current_m
 
 /**
  * When a lecturer requests control of a module.
- * 
- * 
+ *
+ *
  */
 function block_cmanager_handover_email_lecturers($course_id, $currentUserId, $custommessage){
 
-    
+
     global $USER, $CFG, $emailsender, $DB;
     $teacher_ids = '';
 
@@ -375,7 +362,7 @@ function block_cmanager_handover_email_lecturers($course_id, $currentUserId, $cu
 
     // Collect info on the person who made the request
     $requester = $DB->get_record('user', array('id'=>$currentUserId));
-    $requester_email = $requester->email; 
+    $requester_email = $requester->email;
 
     $teacher_ids;
     $assignedlectureremails = '';
@@ -383,97 +370,83 @@ function block_cmanager_handover_email_lecturers($course_id, $currentUserId, $cu
     // for each teacher id, email them
     $idarray = explode(" ", $teacher_ids);
 
-
-    //****** Email each of the people who are associated with the course ******     
+    //****** Email each of the people who are associated with the course ******
     $admin_email = $DB->get_record('block_cmanager_config', array('varname'=>'handoveruser'));
 
-    if (strlen(trim($admin_email->value)) > 0) {//are there characters in the field.	
-        $custom_sig = $admin_email->value;	
+    if (!empty((trim($admin_email->value))) { // Are there characters in the field?
+        $custom_sig = $admin_email->value;
         foreach ($idarray as $single_id) {
+            if (empty($single_id)) {
+                continue;
+            }
             $emailinguserobject = $DB->get_record('user', array('id'=>$single_id));
             $assignedlectureremails .= ' ' . $emailinguserobject->email;
-            $from = $emailsender;
+            $from = $emailsender->email;
             $subject = get_string('emailSubj_teacherHandover','block_cmanager');
 
-			    $messagetext = "
-			    
-			    
-			    " .get_string('emailSubj_pleasecontact','block_cmanager').
-": $requester_email 
+            $messagetext = PHP_EOL . PHP_EOL . get_string('emailSubj_pleasecontact','block_cmanager') . ": $requester_email
 
 " . $custommessage . "
-". $custom_sig;
-				
-	           email_to_user($emailinguserobject, $from, $subject, format_text($messagetext), $messagehtml='', $attachment='',
-  			                 $attachname='', $usetrueaddress=true, $replyto='', $replytoname='', $wordwrapwidth=79);
-	
-}
-	}//end if
-        
-    	    
-        
-   	//***** Email the person who made the request  	
+" . $custom_sig;
+
+            email_to_user($emailinguserobject, $from, $subject, format_text($messagetext), $messagehtml='', $attachment='',
+                    $attachname='', $usetrueaddress=true, $replyto='', $replytoname='', $wordwrapwidth=79);
+
+        }
+    }
+
+   //***** Email the person who made the request
    $current_user_emailinguserobject = $DB->get_record('user', array('id'=>$USER->id));
-   $admin_email = $DB->get_record('block_cmanager_config', array('varname'=>'handovercurrent'));	
-			
-	if (strlen(trim($admin_email->value)) > 0) {//are there characters in the field.		
-		$custom_sig = $admin_email->value;	
-        $from = $emailsender;
+   $admin_email = $DB->get_record('block_cmanager_config', array('varname'=>'handovercurrent'));
+
+    if (strlen(trim($admin_email->value)) > 0) {//are there characters in the field.
+        $custom_sig = $admin_email->value;
+        $from = $emailsender->email;
     $subject = get_string('emailSubj_teacherHandover','block_cmanager');
     $messagetext = "
-		
+
 ".get_string('emailSubj_mailSent1','block_cmanager').":  ". $assignedlectureremails ."
-							
-$custommessage							
-		
+
+$custommessage
+
 $custom_sig
-							";
-	
-	email_to_user($current_user_emailinguserobject, $from, $subject, format_text($messagetext), $messagehtml='', $attachment='',
-				  $attachname='', $usetrueaddress=true, $replyto='', $replytoname='', $wordwrapwidth=79);
+";
 
-}//end if
-        
-				       
-	/******** Send an email to each admin ******************/
-	
+    email_to_user($current_user_emailinguserobject, $from, $subject, format_text($messagetext), $messagehtml='', $attachment='',
+            $attachname='', $usetrueaddress=true, $replyto='', $replytoname='', $wordwrapwidth=79);
+
+}
+    // ******** Send an email to each admin *********
+
     $wherequery = "varname = 'admin_email'";
- 	$modrecords = $DB->get_recordset_select('block_cmanager_config', $wherequery);
+     $modrecords = $DB->get_recordset_select('block_cmanager_config', $wherequery);
 
-    foreach ($modrecords as $rec) {			                               
+    foreach ($modrecords as $rec) {
         $to = $rec->value;
-        $from = $emailsender;
+        $from = $emailsender->email;
         $subject = get_string('emailSubj_teacherHandover','block_cmanager');
 
         $admin_email = $DB->get_record('block_cmanager_config', array('varname'=>'handoveradmin'));
 
-        if (strlen(trim($admin_email->value)) > 0) {//are there characters in the field.	
-            $custom_sig = $admin_email->value;	
+        if (strlen(trim($admin_email->value)) > 0) {//are there characters in the field.
+            $custom_sig = $admin_email->value;
             $messagetext = '';
             $messagetext .= '
 
 ';
-			 
-				$messagetext .= "
+
+                $messagetext .= "
 $custommessage
-								
-		".get_string('emailSubj_teacherHandover','block_cmanager').": $requester_email
-			
+
+        ".get_string('emailSubj_teacherHandover','block_cmanager').": $requester_email
+
 $custom_sig
-								";
-				
+                                ";
             $headers = get_string('emailSubj_From','block_cmanager') . $from;
-            $userobj;
+            $userobj = new stdClass();
             $userobj->email = $to;
-            			
+
             block_cmanager_send_email_to_address($to, $subject, format_text($messagetext));
-		
-		
-		}//end loop
-		
-     }//end if
-					    					       
-}//end function
-
-
-
+        }
+     }
+}
