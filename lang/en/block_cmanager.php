@@ -448,7 +448,7 @@ $string['cmanager:denyrecord'] = 'Deny record';
 $string['cmanager:editrecord'] = 'Edit record';
 $string['cmanager:viewrecord'] = 'View record';
 $string['cmanager:viewconfig'] = 'View config';
-$string['cmanager:cmanager:view'] = 'View block';
+$string['cmanager:view'] = 'View block';
 
 $string['ok'] = 'Ok';
 $string['lib_error_invalid_c'] = 'Invalid course ID!';
