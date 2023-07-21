@@ -108,7 +108,7 @@ $string['email_noReplyInstructions'] = 'This utility sends email requests to adm
 $string['norequestcontrol'] = 'Disable request control';
 $string['norequestcontrol_desc'] = 'Check this box to disable the option to disable the option to request control of an existing course.';
 
-//email subjects and contents
+//email subjects and contentsfcm
 $string['emailSubj_userApproved'] = "Moodle request approved!";
 $string['emailSubj_adminApproved'] = "Moodle user request approved!";
 $string['emailSubj_adminNewRequest'] = "New Moodle request";
@@ -448,7 +448,7 @@ $string['cmanager:denyrecord'] = 'Deny record';
 $string['cmanager:editrecord'] = 'Edit record';
 $string['cmanager:viewrecord'] = 'View record';
 $string['cmanager:viewconfig'] = 'View config';
-$string['cmanager:cmmanager:view'] = 'View block';
+$string['cmanager:cmanager:view'] = 'View block';
 
 $string['ok'] = 'Ok';
 $string['lib_error_invalid_c'] = 'Invalid course ID!';
