@@ -27,7 +27,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2022012300;      // The current module version (Date: YYYYMMDDXX)
+$plugin->version   = 2022072100;      // The current module version (Date: YYYYMMDDXX)
 $plugin->requires  = 2019052000;      // Requires Moodle 3.7 or later.
 $plugin->component = 'block_cmanager';
 $plugin->maturity = MATURITY_BETA;
