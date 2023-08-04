@@ -1,37 +1,37 @@
 <?php
-// ---------------------------------------------------------
-// block_cmanager is free software: you can redistribute it and/or modify
+// This file is part of Course Request Manager for Moodle - https://moodle.org/
+//
+// Course Request Manager is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// block_cmanager is distributed in the hope that it will be useful,
+// Course Request Manager is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-//
-// COURSE REQUEST MANAGER BLOCK FOR MOODLE
-// by Kyle Goslin & Daniel McSweeney
-// Copyright 2012-2018 - Institute of Technology Blanchardstown.
-// ---------------------------------------------------------
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+
 /**
- * COURSE REQUEST MANAGER
-  *
+ * COURSE REQUEST MANAGER BLOCK FOR MOODLE
+ *
  * @package    block_cmanager
- * @copyright  2018 Kyle Goslin, Daniel McSweeney
- * @copyright  2021-2022 Michael Milette (TNG Consulting Inc.), Daniel Keaman
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2018 Kyle Goslin, Daniel McSweeney (Institute of Technology Blanchardstown)
+ * @copyright  2021-2022 TNG Consulting Inc., Daniel Keaman
+ * @copyright  2023 TNG Consulting Inc.
+ * @author     Kyle Goslin, Daniel McSweeney
+ * @author     Michael Milette
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 require_once("../../../config.php");
 global $CFG, $DB;
-$formPath = "$CFG->libdir/formslib.php";
-require_once($formPath);
+require_once("$CFG->libdir/formslib.php");
 require_once('../lib/displayLists.php');
 
-/** Navigation Bar **/
+// Navigation Bar.
 $PAGE->navbar->ignore_active();
 $PAGE->navbar->add(get_string('cmanagerDisplay', 'block_cmanager'), new moodle_url('/blocks/cmanager/cmanager_admin.php'));
 $PAGE->navbar->add(get_string('approvecourse', 'block_cmanager'));
@@ -44,83 +44,57 @@ $PAGE->set_title(get_string('requestReview_ApproveRequest', 'block_cmanager'));
 echo $OUTPUT->header();
 
 $context = context_system::instance();
-if (has_capability('block/cmanager:approverecord',$context)) {
-} else {
-  print_error(get_string('cannotapproverecord', 'block_cmanager'));
+if (!has_capability('block/cmanager:approverecord', $context)) {
+    throw new \moodle_exception('cannotapproverecord', 'block_cmanager');
 }
-
-
-
 ?>
-
-
-
 <script>
 // Open a small window with the details of the module for the admin to see.
 function popitup(url) {
-	newwindow=window.open(url,'name','height=600,width=500');
-	if (window.focus) {newwindow.focus()}
-	return false;
+    newwindow = window.open(url, 'name', 'height=600,width=500');
+    if (window.focus) {newwindow.focus()}
+    return false;
 }
 </script>
 <style>
-	tr:nth-child(odd)		{ background-color:#eee; }
-	tr:nth-child(even)		{ background-color:#fff; }
- </style>
+    tr:nth-child(odd) { background-color:#eee; }
+    tr:nth-child(even) { background-color:#fff; }
+</style>
 <?php
-
-
-if(isset($_GET['id'])){
-	$mid = required_param('id', PARAM_INT);
-	$_SESSION['mid'] = $mid;
+if (isset($_GET['id'])) {
+    $mid = required_param('id', PARAM_INT);
+    $_SESSION['mid'] = $mid;
 } else {
-
-	$mid = $_SESSION['mid'];
+    $mid = $_SESSION['mid'];
 }
-
-
 
 class block_cmanager_approve_course_form extends moodleform {
 
-    function definition() {
-    global $CFG, $currentSess, $mid, $USER, $DB;
+    public function definition() {
+        global $mid, $DB;
 
- 	$rec =  $DB->get_record('block_cmanager_records', array('id'=>$mid));
+        $rec = $DB->get_record('block_cmanager_records', array('id' => $mid));
 
-	$mform =& $this->_form; // Don't forget the underscore!
+        $mform =& $this->_form; // Don't forget the underscore.
 
-	// Page description text
-    $mform->addElement('html', '<p><a href="../cmanager_admin.php" class="btn btn-default"><img src="../icons/back.png" alt=""> '.get_string('back','block_cmanager').'</a></p>');
+        // Page description text.
+        $mform->addElement('html', '<p><a href="../cmanager_admin.php" class="btn btn-default"><img src="../icons/back.png" alt="">'
+                . get_string('back', 'block_cmanager').'</a></p>');
 
-	$rec = $DB->get_recordset_select('block_cmanager_records', 'id = ' . $mid);
-   	$displayModHTML = block_cmanager_display_admin_list($rec, false, false, false, '');
+        $rec = $DB->get_recordset_select('block_cmanager_records', 'id = ' . $mid);
 
-	$outputHTML = '<div>'.$displayModHTML.'</div>';
-
-	$mform->addElement('html', $outputHTML);
-	$mform->addElement('html', '<button type="button" onclick="window.location.href=\'approve_course_new.php\'">'.get_string('requestReview_ApproveRequest','block_cmanager').'</button>');
-	$mform->addElement('html', '<button type="button" onclick="return popitup(\'showcoursedetails.php?id='.$mid.'\')">'.get_string('requestReview_OpenDetails','block_cmanager').'</button>');
-
-
-	}
+        $mform->addElement('html', '<div>' . block_cmanager_display_admin_list($rec, false, false, false, '') . '</div>');
+        $mform->addElement('html', '<button type="button" onclick="window.location.href=\'approve_course_new.php\'">'
+                . get_string('requestReview_ApproveRequest', 'block_cmanager').'</button>');
+        $mform->addElement('html', '<button type="button" onclick="return popitup(\'showcoursedetails.php?id=' . $mid . '\')">'
+                . get_string('requestReview_OpenDetails', 'block_cmanager') . '</button>');
+    }
 }
-
 
 $mform = new block_cmanager_approve_course_form();
 
-if ($mform->is_cancelled()) {
-}
-else if ($fromform=$mform->get_data()) {
-
-}
-else {
-	$mform->set_data($mform);
-	$mform->display();
+if (!$mform->is_cancelled() || empty($fromform = $mform->get_data())) {
+    $mform->set_data($mform);
+    $mform->display();
     echo $OUTPUT->footer();
 }
-
-
-
-
-
-?>

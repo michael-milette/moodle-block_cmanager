@@ -18,7 +18,6 @@
       </KEYS>
     </TABLE>
 
-
  <TABLE NAME="block_cmanager_config" COMMENT="block_cmanager_config table retrofitted from MySQL" PREVIOUS="block_cmanager_comments" NEXT="block_cmanager_formfields">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"  NEXT="varname"/>
@@ -38,13 +37,12 @@
         <FIELD NAME="position" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false"  PREVIOUS="lefttext" NEXT="formid"/>
         <FIELD NAME="formid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false"  PREVIOUS="position" NEXT="reqfield"/>
         <FIELD NAME="reqfield" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false"  PREVIOUS="formid"/>
-      
+
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-
 
  <TABLE NAME="block_cmanager_form_data" COMMENT="block_cmanager_form_data table retrofitted from MySQL" PREVIOUS="block_cmanager_formfields" NEXT="block_cmanager_records">
       <FIELDS>
@@ -57,7 +55,6 @@
       </KEYS>
     </TABLE>
 
-
 <TABLE NAME="block_cmanager_records" COMMENT="block_cmanager_records table retrofitted from MySQL" PREVIOUS="block_cmanager_form_data">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"  NEXT="createdbyid"/>
@@ -65,7 +62,7 @@
         <FIELD NAME="modname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"  PREVIOUS="createdbyid" NEXT="modcode"/>
         <FIELD NAME="modcode" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false"  PREVIOUS="modname" NEXT="modmode"/>
         <FIELD NAME="modmode" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false"  PREVIOUS="modcode" NEXT="modkey"/>
-		<FIELD NAME="modkey" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false"  PREVIOUS="modmode" NEXT="cate"/>
+        <FIELD NAME="modkey" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false"  PREVIOUS="modmode" NEXT="cate"/>
         <FIELD NAME="cate" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false"  PREVIOUS="modkey" NEXT="status"/>
         <FIELD NAME="status" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false"  PREVIOUS="cate" NEXT="req_type"/>
         <FIELD NAME="req_type" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false"  PREVIOUS="status" NEXT="req_values"/>
@@ -93,8 +90,6 @@
       </KEYS>
     </TABLE>
 
-
   </TABLES>
-  
-</XMLDB>
 
+</XMLDB>

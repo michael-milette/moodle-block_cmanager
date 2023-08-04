@@ -1,5 +1,5 @@
 <?php
-// This file is part of Course Request Manager for Moodle - http://moodle.org/
+// This file is part of Course Request Manager for Moodle - https://moodle.org/
 //
 // Course Request Manager is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,15 +12,15 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Settings for Course Request Manager.
+ * COURSE REQUEST MANAGER BLOCK FOR MOODLE
  *
  * @package    block_cmanager
- * @copyright  2021-2022 TNG Consulting Inc. - www.tngconsulting.ca
+ * @copyright  2021-2023 TNG Consulting Inc.
  * @author     Michael Milette
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;

@@ -12,30 +12,32 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 /**
  * Defines {@link \block_cmanager\privacy\provider} class.
  *
  * @package    block_cmanager
  * @category   privacy
  * @copyright  2018 LTS
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 namespace block_cmanager\privacy;
-defined('MOODLE_INTERNAL') || die();
+
 use core_privacy\local\metadata\collection;
 use core_privacy\local\request\approved_contextlist;
 use core_privacy\local\request\contextlist;
 use core_privacy\local\request\helper;
 use core_privacy\local\request\transform;
 use core_privacy\local\request\writer;
+
 /**
  * Privacy API implementation for the COURSE REQUEST MANAGER plugin.
  *
  * @copyright  2018 Karen Holland <karen@lts.ie>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class provider implements 
+class provider implements
     \core_privacy\local\metadata\provider,
     \core_privacy\local\request\plugin\provider {
     /**
@@ -93,7 +95,7 @@ class provider implements
         $user = $contextlist->get_user();
         $writer = writer::with_context(\context_system::instance());
         $subcontext = [get_string('pluginname', 'block_cmanager')];
-        $query = $DB->get_records('block_cmanager_records', ['createdbyid' => $user->id], '', 
+        $query = $DB->get_records('block_cmanager_records', ['createdbyid' => $user->id], '',
             'id, createdbyid as userid, modname, modcode, modmode, status, createdate');
         if ($query) {
             $writer->export_data($subcontext, (object) ['requests' => array_values(array_map(function($record) {

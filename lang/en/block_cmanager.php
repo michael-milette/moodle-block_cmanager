@@ -1,41 +1,43 @@
 <?php
-// ---------------------------------------------------------
-// block_cmanager is free software: you can redistribute it and/or modify
+// This file is part of Course Request Manager for Moodle - https://moodle.org/
+//
+// Course Request Manager is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// block_cmanager is distributed in the hope that it will be useful,
+// Course Request Manager is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-//
-// COURSE REQUEST MANAGER BLOCK FOR MOODLE
-// by Kyle Goslin & Daniel McSweeney
-// Copyright 2012-2018 - Institute of Technology Blanchardstown.
-// ---------------------------------------------------------
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+
 /**
- * COURSE REQUEST MANAGER
-  *
+ * COURSE REQUEST MANAGER BLOCK FOR MOODLE
+ *
  * @package    block_cmanager
- * @copyright  2018 Kyle Goslin, Daniel McSweeney
- * @copyright  2021-2022 Michael Milette (TNG Consulting Inc.), Daniel Keaman
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2012-2018 Kyle Goslin, Daniel McSweeney (Institute of Technology Blanchardstown)
+ * @copyright  2021-2022 TNG Consulting Inc., Daniel Keaman
+ * @copyright  2023 TNG Consulting Inc.
+ * @author     Kyle Goslin, Daniel McSweeney
+ * @author     Daniel Keaman
+ * @author     Michael Milette
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 $string['pluginname'] = 'Course Request Manager';
 $string['plugindesc'] = 'Course Request Manager';
 
-//block links
+// For block links.
 $string['block_admin'] = 'Request queue';
 $string['block_config'] = 'Configuration';
 $string['block_request'] = 'Make a request';
 $string['block_manage'] = 'Manage your requests';
 
-//basic Navigation
-$string['back'] = 'Back	';
+// For Basic Navigation.
+$string['back'] = 'Back    ';
 $string['SaveChanges'] = 'Save changes';
 $string['ChangesSaved'] = 'Changes saved';
 $string['SaveAll'] = 'Save all';
@@ -47,7 +49,7 @@ $string['clickhere'] = 'Click here';
 $string['update'] = 'Update';
 $string['Request'] = 'Request';
 
-//block_cmanager_config.php
+// For block_cmanager_config.php.
 $string['administratorConfig'] = 'Other settings';
 $string['emailConfig'] = 'E-mail config';
 $string['emailConfigContents'] = 'Configure communication e-mails';
@@ -66,7 +68,6 @@ $string['namingConvetion_option3'] = 'Full name (short name)';
 $string['namingConvetion_option4'] = 'Short name - full name (year)';
 $string['namingConvetion_option5'] = 'Full name (year)';
 
-
 $string['snamingConvetion'] = 'Short name format';
 $string['snamingConvetionInstruction'] = 'Please choose a short name format for newly created courses';
 $string['snamingConvetion_option1'] = 'Short name only';
@@ -83,8 +84,7 @@ $string['configure_instruction2'] = 'The request form is split over two pages. P
 $string['configure_instruction3'] = 'This allows you to configure the 2nd page of the request. On this page you can create form elements that must be completed by the user as part of the request process. While this information is not used by Course Request Manager, it will allow administrators to gather structured information on the request and aid in the decision making process.';
 
 
-
-//email configuration strings
+// For email configuration strings.
 $string['emailConfigHeader'] = 'Here you can make changes to the e-mails which are sent to the users as notification when the status of their module has changed.';
 $string['email_courseCode'] = 'Course code';
 $string['email_courseName'] = 'Course name';
@@ -104,11 +104,11 @@ $string['email_handover'] = 'Handover request';
 $string['email_noReply'] = 'Communications e-mail address';
 $string['email_noReplyInstructions'] = 'This utility sends email requests to administrators and end users as course requests are processed. Please enter the email address that these emails will appear to be sent from. It is recommended to use a no-reply email address. e.g. noreply@example.com';
 
-// Plugin settings.
+// For Plugin settings.
 $string['norequestcontrol'] = 'Disable request control';
 $string['norequestcontrol_desc'] = 'Check this box to disable the option to disable the option to request control of an existing course.';
 
-//email subjects and contents
+// For email subjects and contents.
 $string['emailSubj_userApproved'] = "Moodle request approved!";
 $string['emailSubj_adminApproved'] = "Moodle user request approved!";
 $string['emailSubj_adminNewRequest'] = "New Moodle request";
@@ -125,7 +125,7 @@ $string['emailSubj_mailSent1'] = "An email has been sent to";
 $string['emailSubj_mailSent2'] = "on your behalf.";
 $string['emailSubj_requester'] = "Requester e-mail";
 
-//course request
+// For course request.
 $string['request_rule1'] = 'Please enter a value in this field.';
 $string['request_rule2'] = 'Please select a value.';
 $string['request_rule3'] = 'Please enter an enrolment key.';
@@ -138,7 +138,7 @@ $string['request_addModule'] = 'Add course';
 $string['requestForm_category'] = 'Category';
 
 $string['changeshavebeensaved'] = 'Changes saved.';
-//form builder
+// For form builder.
 $string['formBuilder_name'] = 'Configure Request Form - Page 2';
 $string['formBuilder_instructions'] = 'The course request facility has been developed to allow users to enter additional information on course requests. This form can be configured to allow you to gather as much or as little information from the end user. If you require information from your users to assist you in creating a course, then configure the form here. Typical uses have included:';
 $string['formBuilder_instructions1'] = 'Programme codes and titles';
@@ -183,13 +183,13 @@ $string['formBuilder_editingForm']  = 'Editing form';
 $string['formBuilder_shownbelow']  = 'is shown below';
 $string['formBuilder_nooptionsadded']  = 'No fields have been added.';
 
-//preview form page
+// For preview form page.
 $string['formBuilder_previewHeader'] = 'Preview form';
 $string['formBuilder_previewInstructions1'] = 'Please complete this form as accurately as possible.';
 $string['formBuilder_previewInstructions2'] = 'Please consult local guidelines for making course requests';
 $string['formBuilder_step2'] = 'Step 2: Other details';
 
-//Configure Course Search Form Fields
+// Configure Course Search Form Fields.
 $string['formfieldsHeader'] = 'Configure Request Form - Page 1';
 $string['entryFields_instruction1'] = 'Configure the first page of the course request form. The first page of the request form is used to accept values from the user for the course short name and the course full name as required by Moodle. These may be described differently by your organisation. For example you may use a course code (short name) and a course name (full name) to describe your courses.';
 $string['entryFields_instruction2'] = 'For each of the two fields below, you may change the name of the field as it appears to the user and also the help text that is associated with each field.';
@@ -203,7 +203,7 @@ $string['entryFields_DropdownDescription'] = ' You may wish to add an optional d
 $string['entryFields_AddNewItem'] = 'Add new item';
 $string['entryFields_values'] = 'Values: ';
 
-//module_manager
+// For module_manager.
 $string['cmanager'] = 'CRManager';
 $string['cmanagerDisplay'] = 'Course Request Manager';
 $string['cmanagerDisplaySearchForm'] = 'Configure Request Form - Page 1';
@@ -236,7 +236,7 @@ $string['clickHereToReturn'] = 'Click here to return';
 $string['selectedcategory'] = 'Category';
 $string['yes'] = 'Yes';
 
-//request details
+// For request details.
 $string['requestReview_Summary'] = 'Request summary';
 $string['requestReview_intro1'] = 'Please review the following information carefully before submitting your request.';
 $string['requestReview_intro2'] = 'Your request will be dealt with as soon as possible.';
@@ -251,7 +251,6 @@ $string['requestReview_moduleCode'] = 'Course code';
 $string['requestReview_moduleName'] = 'Course name';
 $string['requestReview_originator'] = 'Originator';
 
-
 $string['requestReview_ccdne'] = 'Course currently does not exist';
 $string['reviewLocation'] = 'Location';
 
@@ -264,13 +263,11 @@ $string['requestReview_requestType'] = 'Request type';
 $string['requestReview_OpenDetails'] = 'Open details';
 $string['requestReview_ApproveRequest'] = 'Approve request';
 
-
 $string['requestReview_courseName'] = 'Course name';
 $string['requestReview_courseCode'] = 'Course code';
 
 
-
-//comments
+// For comments.
 $string['comments_date'] = 'Date / Time';
 $string['comments_message'] = 'Message';
 $string['comments_from'] = 'From';
@@ -280,20 +277,20 @@ $string['comments_PostComment'] = 'Post comment';
 $string['comments_comment'] = 'Comment';
 $string['comments_author'] = 'Author';
 
-//deny request
+// For deny request.
 $string['denyrequest_Title'] = 'Course Request Facility - Deny request';
 $string['denyrequest_Instructions'] = 'Outline below why the request has been denied';
 $string['denyrequest_Btn'] = 'Deny request';
 $string['denyrequest_reason'] = 'Outline below why the request has been denied (max 280 chars)';
 
-//approve request
+// For approve request.
 $string['approverequest_Title'] = 'Course Request Facility - Approve request';
 $string['approverequest_New'] = 'New course has been created';
 $string['approverequest_Process'] = 'Handover process has begun';
 
 $string['approve_course_no_id'] = 'No course ID set';
 
-//misc
+// Miscellanious.
 $string['alert'] = 'Alert';
 $string['noPending'] = 'Sorry, nothing pending!';
 $string['status'] = 'STATUS';
@@ -309,7 +306,6 @@ $string['currentrequests'] = 'Current requests';
 $string['archivedrequests'] = 'Archived requests';
 $string['myarchivedrequests'] = 'My archived requests';
 $string['allarchivedrequests'] = 'All archived requests';
-
 
 $string['configure'] = 'Configure Course Request Manager';
 $string['courserequestline1'] = 'Please refer to in-house guidelines for naming courses.';
@@ -339,32 +335,29 @@ $string['sendrequestforcontrol'] = 'Send request for control';
 $string['sendrequestemail'] = 'Send request e-mail';
 $string['emailswillbesent'] = 'E-mails will be sent to the owner of the course. Once you send a request, Please wait for a response.';
 
-// View summary.php
+// For view summary.php.
 $string['viewsummary'] = 'View summary';
 
-// Comment.php
+// For Comment.php.
 $string['addviewcomments'] = 'Add / View comments';
 
-// Approve_course.php
+// For Approve_course.php.
 $string['approvecourse'] = 'Approve course';
 
-
-
-// deny_course.php
+// For deny_course.php.
 $string['denycourse'] = 'Deny course request';
 
-// Bulk Deny
+// For Bulk Deny.
 $string['bulkdeny'] = 'Bulk deny';
 
-// Bulk Approve
+// For Bulk Approve.
 $string['bulkapprove'] = 'Bulk approve';
 $string['approvingcourses'] = 'Approving courses...';
 
-// block_cmanager_config.php
+// For block_cmanager_config.php.
 $string['managersettings'] = 'Manager settings';
 
-
-// Form Page 1 & Page2
+// For Form Page 1 & Page2.
 $string['formpage1'] = 'Form page 1';
 $string['formpage2'] = 'Form page 2';
 $string['formpage2builder'] = 'Form page 2 builder';
@@ -374,35 +367,33 @@ $string['formpage1_textarea'] = 'Text area';
 $string['formpage1_rbg'] = 'Radio button group';
 $string['formpage1_cbg'] = 'Check box group';
 
-// Preview form
+// Preview form.
 $string['previewform'] = 'Preview form';
 $string['preview_modmode'] = 'Please select module mode';
 
-// course_exists.php
+// For course_exists.php.
 $string['courseexists'] = 'Course exists';
 
-// Request control.php
+// Request control.php.
 $string['requestcontrol'] = 'Request control';
 
-
-// History record management
+// History record management.
 $string['historynav'] = 'History';
 
-
-// Search Feature
+// Search Feature.
 $string['searchAuthor'] = 'Author';
 $string['search_side_text'] = 'Search';
 $string['searchbuttontext'] = 'Search!';
 $string['clearsearch'] = 'Clear search';
-// Quick approve
+
+// Quick approve.
 $string['quickapprove'] = 'Quick approve';
 $string['quickapprove_desc'] = 'Quick approve this course?';
 
-// Email and other settings
+// Email and other settings.
 
 $string['configureemailsettings'] = 'Configure e-mail settings';
 $string['configureemailsettings_desc'] = 'This section allows you to configure the e-mail settings for this tool';
-
 
 $string['configureadminsettings'] = 'Admin settings';
 $string['configureadminsettings_desc'] = 'Additional settings for Course Request Manager';
@@ -413,7 +404,7 @@ $string['optional_field'] = 'Optional field';
 $string['cmanager:myaddinstance'] = 'Add instance';
 $string['cmanager:addinstance'] = 'Add instance';
 
-// displayLists
+// For displayLists.
 $string['displayListWarningTitle'] = 'WARNING';
 $string['displayListWarningSideText'] = 'This shortname already exists in the Moodle database. Admin attention required. This request is excluded from bulk actions.';
 
@@ -429,8 +420,7 @@ $string['denytext3'] = 'Reason 3';
 $string['denytext4'] = 'Reason 4';
 $string['denytext5'] = 'Reason 5';
 
-
-// Error messages
+// Error messages.
 $string['cannotrequestcourse'] = ' Sorry your account does not have sufficient privileges to request a course. You need to be assigned to a system role with sufficient privileges.';
 $string['cannotviewrecords'] = ' Sorry your account does not have sufficient privileges to view records. You need to be assigned to a system role with sufficient privileges.';
 $string['cannotapproverecord'] = ' Sorry your account does not have sufficient privileges to approve records. You need to be assigned to a system role with sufficient privileges.';
@@ -448,17 +438,17 @@ $string['cmanager:denyrecord'] = 'Deny record';
 $string['cmanager:editrecord'] = 'Edit record';
 $string['cmanager:viewrecord'] = 'View record';
 $string['cmanager:viewconfig'] = 'View config';
+$string['cmanager:view'] = 'View block';
 
 $string['ok'] = 'Ok';
 $string['lib_error_invalid_c'] = 'Invalid course ID!';
 
 $string['course_new_mod_create'] = 'New module creation';
 
-
-// Admin messages
+// Admin messages.
 $string['cmanager_admin_enterstring'] = 'Please enter a search string';
 
-// events
+// For events.
 $string['startingcoursecreation'] = 'starting course creation';
 $string['createdsuccess'] = 'created a new course successfully';
 $string['courserecdeleted'] = 'Course request has been deleted';
@@ -473,8 +463,7 @@ $string['updatingrecstatus'] = 'updating record status';
 $string['courserecorddeleted'] = 'Course record deleted';
 $string['deletecourserequest'] = 'Delete course request';
 
-
-// GDPR Privacy API
+// For GDPR Privacy API.
 $string['comments'] = 'Comments';
 $string['privacy:metadata:db:block_cmanager_records:modname'] = 'The requested course full name';
 $string['privacy:metadata:db:block_cmanager_records:modcode'] = 'The requested course short name';

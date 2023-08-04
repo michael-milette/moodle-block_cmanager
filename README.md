@@ -3,28 +3,35 @@
 Course Request Manager block for Moodle
 =======================================
 
-![PHP](https://img.shields.io/badge/PHP-v7.1%2F%20v7.2%2F%20v7.3%2F%20v7.4-blue.svg)
-![Moodle](https://img.shields.io/badge/Moodle-v3.7%20to%20v3.11.x-orange.svg)
+![PHP](https://img.shields.io/badge/PHP-v7.1%2F%20v7.2%2F%20v7.3%2F%20v7.4%2F%20v8.0-blue.svg)
+![Moodle](https://img.shields.io/badge/Moodle-v3.7%20to%20v4.2.x-orange.svg)
 [![GitHub Issues](https://img.shields.io/github/issues/michael-milette/moodle-block_cmanager.svg)](https://github.com/michael-milette/moodle-block_cmanager/issues)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-green.svg)](#contributing)
 [![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](#license)
 
 # Table of Contents
 
+- [Course Request Manager block for Moodle](#course-request-manager-block-for-moodle)
+- [Table of Contents](#table-of-contents)
 - [Basic Overview](#basic-overview)
 - [Requirements](#requirements)
 - [Download Course Request Manager for Moodle](#download-course-request-manager-for-moodle)
 - [Installation](#installation)
+  - [Permissions](#permissions)
 - [Usage](#usage)
 - [Updating](#updating)
 - [Uninstallation](#uninstallation)
 - [Limitations](#limitations)
 - [Language Support](#language-support)
 - [Troubleshooting](#troubleshooting)
-- [Frequently Asked Questions (FAQ)](#faq)
+- [FAQ](#faq)
+  - [Answers to Frequently Asked Questions](#answers-to-frequently-asked-questions)
+    - [Are there any security considerations?](#are-there-any-security-considerations)
+    - [How can I get answers to other questions?](#how-can-i-get-answers-to-other-questions)
 - [Contributing](#contributing)
+  - [Contributors](#contributors)
 - [Motivation for this plugin](#motivation-for-this-plugin)
-- [Further information](#further-information)
+- [Further Information](#further-information)
 - [License](#license)
 
 # Basic Overview
@@ -221,7 +228,7 @@ https://github.com/michael-milette/moodle-enrol_invitation
 
 # License
 
-Copyright © 2021-2022 TNG Consulting Inc. - https://www.tngconsulting.ca/
+Copyright © 2021-2023 TNG Consulting Inc. - https://www.tngconsulting.ca/
 Copyright © 2012-2018 Kyle Goslin & Daniel McSweeney - Institute of Technology Blanchardstown
 
 This file is part of Course Request Manager for Moodle - https://moodle.org/

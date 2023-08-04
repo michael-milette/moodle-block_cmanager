@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.3.2] - 2023-06-15 (BETA)
+### Updated
+- Improved compatibility with PHP 8.0.
+- Improved compatibility with Moodle 4.0, 4.1 and 4.2.
+- Refactored code in most PHP files.
+- Fixed all code check errors and most warnings.
+- Copyright notice now includes 2023
+
 ## [5.3.1] - 2022-01-23 (BETA)
 ### Added
 - Adopted by new maintainer - Michael Milette, TNG Consulting Inc.

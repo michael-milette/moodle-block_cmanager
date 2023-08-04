@@ -7,7 +7,7 @@
         "composer/installers": "~1.0"
     },
     "extra": {
-        "installer-name": "filtercodes"
+        "installer-name": "cmanager"
     },
     "support": {
         "issues": "https://github.com/michael-milette/moodle-block_cmanager/issues",

@@ -1,5 +1,5 @@
 <?php
-// This file is part of Course Request Manager for Moodle - http://moodle.org/
+// This file is part of Course Request Manager for Moodle - https://moodle.org/
 //
 // Course Request Manager is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,18 +12,21 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Plugin capabilities.
+ * COURSE REQUEST MANAGER BLOCK FOR MOODLE
  *
  * @package    block_cmanager
- * @copyright  2012-2014 Kyle Goslin, Daniel McSweeney (Institute of Technology Blanchardstown)
- * @copyright  2021-2022 TNG Consulting Inc.
+ * @copyright  2012-2018 Kyle Goslin, Daniel McSweeney (Institute of Technology Blanchardstown)
+ * @copyright  2021-2023 TNG Consulting Inc.
  * @author     Kyle Goslin, Daniel McSweeney
  * @author     Michael Milette
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die();
+
 $capabilities = array(
 
     'block/cmanager:myaddinstance' => array(
@@ -33,15 +36,12 @@ $capabilities = array(
             'editingteacher' => CAP_ALLOW,
             'coursecreator' => CAP_ALLOW,
             'manager' => CAP_ALLOW
-
         ),
-
         'clonepermissionsfrom' => 'moodle/my:manageblocks'
     ),
 
     'block/cmanager:addinstance' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
-
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
@@ -49,7 +49,6 @@ $capabilities = array(
             'coursecreator' => CAP_ALLOW,
             'manager' => CAP_ALLOW
         ),
-
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
     ),
 
@@ -58,101 +57,100 @@ $capabilities = array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'legacy' => array(
-        	'coursecreator' => CAP_ALLOW,
+            'coursecreator' => CAP_ALLOW,
             'teacher'        => CAP_PREVENT,
             'editingteacher' => CAP_PREVENT,
             'manager'          => CAP_ALLOW,
             'student'        => CAP_PREVENT,
             'guest' => CAP_PREVENT
         ),
-	),
+    ),
 
- 	'block/cmanager:denyrecord' => array(
+     'block/cmanager:denyrecord' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'legacy' => array(
-        	'coursecreator' => CAP_ALLOW,
+            'coursecreator' => CAP_ALLOW,
             'teacher'        => CAP_PREVENT,
             'editingteacher' => CAP_PREVENT,
             'manager'          => CAP_ALLOW,
             'student'        => CAP_PREVENT,
             'guest' => CAP_PREVENT
         ),
-	),
+    ),
 
- 	'block/cmanager:editrecord' => array(
+     'block/cmanager:editrecord' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'legacy' => array(
-        	'coursecreator' => CAP_ALLOW,
+            'coursecreator' => CAP_ALLOW,
             'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
             'manager'          => CAP_ALLOW,
             'student'        => CAP_PREVENT,
             'guest' => CAP_PREVENT
         ),
-	),
+    ),
 
-	'block/cmanager:deleterecord' => array(
+    'block/cmanager:deleterecord' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'legacy' => array(
-        	'coursecreator' => CAP_ALLOW,
+            'coursecreator' => CAP_ALLOW,
             'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
             'manager'          => CAP_ALLOW,
             'student'        => CAP_PREVENT,
             'guest' => CAP_PREVENT
         ),
-	),
+    ),
 
- 	'block/cmanager:addrecord' => array(
+     'block/cmanager:addrecord' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'legacy' => array(
-        	'coursecreator' => CAP_ALLOW,
+            'coursecreator' => CAP_ALLOW,
             'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
             'manager'          => CAP_ALLOW,
             'student'        => CAP_PREVENT,
             'guest' => CAP_PREVENT
         ),
-	),
+    ),
 
-
- 	'block/cmanager:viewrecord' => array(
+     'block/cmanager:viewrecord' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'legacy' => array(
-        	'coursecreator' => CAP_ALLOW,
+            'coursecreator' => CAP_ALLOW,
             'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
             'manager'          => CAP_ALLOW,
             'student'        => CAP_PREVENT,
             'guest' => CAP_PREVENT
         ),
-	),
+    ),
 
- 	'block/cmanager:addcomment' => array(
+     'block/cmanager:addcomment' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'legacy' => array(
-        	'coursecreator' => CAP_ALLOW,
+            'coursecreator' => CAP_ALLOW,
             'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
             'manager'          => CAP_ALLOW,
             'student'        => CAP_PREVENT,
             'guest' => CAP_PREVENT
         ),
-	),
+    ),
 
- 	'block/cmanager:viewconfig' => array(
+     'block/cmanager:viewconfig' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
@@ -163,7 +161,7 @@ $capabilities = array(
             'student'        => CAP_PREVENT,
             'guest' => CAP_PREVENT
         ),
-	),
+    ),
 
     // Hide block if not logged-in.
     'block/cmanager:view' => array(

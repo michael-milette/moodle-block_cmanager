@@ -1,5 +1,5 @@
 <?php
-// This file is part of Course Request Manager for Moodle - http://moodle.org/
+// This file is part of Course Request Manager for Moodle - https://moodle.org/
 //
 // Course Request Manager is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,25 +12,25 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Contains block_cmanager
+ * COURSE REQUEST MANAGER BLOCK FOR MOODLE
  *
  * @package    block_cmanager
  * @copyright  2012-2018 Kyle Goslin, Daniel McSweeney (Institute of Technology Blanchardstown)
- * @copyright  2021-2022 TNG Consulting Inc.
+ * @copyright  2021-2023 TNG Consulting Inc.
  * @author     Kyle Goslin, Daniel McSweeney
  * @author     Michael Milette
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
  /**
   * A block which displays the Course Request Manager
   *
   * @package    block_cmanager
-  * @copyright  2022 TNG Consulting Inc.
-  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+  * @copyright  2022-2023 TNG Consulting Inc.
+  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
   */
 class block_cmanager extends block_list {
     /**
@@ -38,7 +38,7 @@ class block_cmanager extends block_list {
      *
      * @return void
      */
-    function init() {
+    public function init() {
         $this->title = get_string('plugindesc', 'block_cmanager');
     }
 
@@ -47,20 +47,20 @@ class block_cmanager extends block_list {
      *
      * @return object Contains the content and footer for the block.
      */
-    function get_content() {
-        if ($this->content !== NULL) {
+    public function get_content() {
+        if ($this->content !== null) {
             return $this->content;
         }
 
-        $this->content =  new stdClass;
+        $this->content = new stdClass();
         $this->content->items = array();
         $this->content->icons = array();
         $this->content->footer = '';
 
-        if (isloggedin() and !isguestuser()) {   // Show the block if logged-in.
-            global $DB, $CFG;
+        if (isloggedin() && !isguestuser()) {   // Show the block if logged-in.
+            global $DB;
             $context = context_system::instance();
-            $requests = $DB->count_records('block_cmanager_records', array('status'=>'PENDING'));
+            $requests = $DB->count_records('block_cmanager_records', array('status' => 'PENDING'));
 
             // For regular users.
 
@@ -90,7 +90,7 @@ class block_cmanager extends block_list {
      *
      * @return void
      */
-    function applicable_formats() {
+    public function applicable_formats() {
         return array('all' => true);
     }
 
@@ -99,7 +99,7 @@ class block_cmanager extends block_list {
      *
      * @return bool false
      */
-    function instance_allow_multiple() {
+    public function instance_allow_multiple() {
         return false;
     }
 
@@ -108,7 +108,7 @@ class block_cmanager extends block_list {
      *
      * @return bool true
      */
-    function has_config() {
+    public function has_config() {
         return true;
     }
 
@@ -117,11 +117,11 @@ class block_cmanager extends block_list {
      *
      * @return bool true
      */
-    function instance_allow_config() {
+    public function instance_allow_config() {
         return true;
     }
 
-    function builditem($identifier, $url, $query = [], $icon = '', $identifierparam = '') {
+    public function builditem($identifier, $url, $query = [], $icon = '', $identifierparam = '') {
         global $CFG;
 
         $string = get_string($identifier, 'block_cmanager') . rtrim(' ' . $identifierparam);
