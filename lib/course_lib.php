@@ -101,7 +101,6 @@ function block_cmanager_create_new_course_by_record_id($mid, $sendMail) {
     ));
     $event->trigger();
     
-    
     $new_course->coursecat = 1;
     $new_course->format = get_config('moodlecourse', 'format');
     //Get the default timestamp for new courses
@@ -195,9 +194,7 @@ function block_cmanager_create_new_course_by_record_id($mid, $sendMail) {
     
     // create the course using the data gathered
     $course = create_course($new_course, $editoroptions);
-    
-    
-    
+    $objid = $course->id;
  
    // 
    // Step 2 -- Enroll Creator
@@ -271,7 +268,7 @@ function block_cmanager_create_new_course_by_record_id($mid, $sendMail) {
         $enrollmentRecord->timemodified = time();
 
         $enrolRes = $DB->insert_record('enrol', $enrollmentRecord);
-        //
+
         // Step 3 ---- enrollment key
         //
         if(!$enrolRes){
@@ -301,11 +298,11 @@ function block_cmanager_create_new_course_by_record_id($mid, $sendMail) {
       block_cmanager_send_emails($course->id, $new_course->shortname, $new_course->fullname, $modkey, $mid);
 	}
     
-    // Step 4 - Updating the course record status
+    // // Step 4 - Updating the course record status
     $event = \block_cmanager\event\course_process::create(array(
-    'objectid' => $objid,
-    'context' => $context,
-    'other' => '-'. get_string('stepnumber', 'block_cmanager').' 4/5 ' . get_string('updatingrecstatus','block_cmanager'),
+        'objectid' => $objid,
+        'context' => $context,
+        'other' => '-'. get_string('stepnumber', 'block_cmanager').' 4/5 ' . get_string('updatingrecstatus','block_cmanager'),
     ));
     $event->trigger();
     
@@ -324,9 +321,9 @@ function block_cmanager_create_new_course_by_record_id($mid, $sendMail) {
     // Make a log entry to say the course has been created
     // Step 5/5
     $event = \block_cmanager\event\course_created::create(array(
-    'objectid' => $objid,
-    'context' => $context,
-    'other' => '-'. get_string('stepnumber', 'block_cmanager').' 5/5 course ID ' . $course->id . '',
+        'objectid' => $objid,
+        'context' => $context,
+        'other' => '-'. get_string('stepnumber', 'block_cmanager').' 5/5 course ID ' . $course->id . '',
     ));
     $event->trigger();
         
@@ -334,12 +331,6 @@ function block_cmanager_create_new_course_by_record_id($mid, $sendMail) {
     
     // return the ID which will be redirected to when finished.
      return $course->id;
-    
-   
-	
-	
-	
-	
 }
 
 

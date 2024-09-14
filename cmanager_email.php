@@ -123,7 +123,6 @@ global $USER, $CFG, $emailsender, $senderemailaddress, $DB;
         // Send an email to each admin
         foreach ($modrecords as $rec) {
             $to = $rec->value;
-            $from = $emailsender->email;
             $subject = get_string('emailSubj_adminApproved','block_cmanager');
 
 
@@ -373,7 +372,7 @@ function block_cmanager_handover_email_lecturers($course_id, $currentUserId, $cu
     //****** Email each of the people who are associated with the course ******
     $admin_email = $DB->get_record('block_cmanager_config', array('varname'=>'handoveruser'));
 
-    if (!empty((trim($admin_email->value))) { // Are there characters in the field?
+    if (!empty((trim($admin_email->value)))) { // Are there characters in the field?
         $custom_sig = $admin_email->value;
         foreach ($idarray as $single_id) {
             if (empty($single_id)) {

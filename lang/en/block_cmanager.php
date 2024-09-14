@@ -106,7 +106,7 @@ $string['email_noReplyInstructions'] = 'This utility sends email requests to adm
 
 // Plugin settings.
 $string['norequestcontrol'] = 'Disable request control';
-$string['norequestcontrol_desc'] = 'Check this box to disable the option to disable the option to request control of an existing course.';
+$string['norequestcontrol_desc'] = 'Check this box to disable option to request control of an existing course.';
 
 //email subjects and contents
 $string['emailSubj_userApproved'] = "Moodle request approved!";
