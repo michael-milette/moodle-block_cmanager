@@ -18,7 +18,7 @@
  * Settings for Course Request Manager.
  *
  * @package    block_cmanager
- * @copyright  2021-2022 TNG Consulting Inc. - www.tngconsulting.ca
+ * @copyright  2021-2024 TNG Consulting Inc. - {@link https://www.tngconsulting.ca} - www.tngconsulting.ca
  * @author     Michael Milette
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

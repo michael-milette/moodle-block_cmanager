@@ -19,7 +19,7 @@
  *
  * @package    block_cmanager
  * @copyright  2012-2018 Kyle Goslin, Daniel McSweeney (Institute of Technology Blanchardstown)
- * @copyright  2021-2022 TNG Consulting Inc.
+ * @copyright  2021-2024 TNG Consulting Inc. - {@link https://www.tngconsulting.ca}
  * @author     Kyle Goslin, Daniel McSweeney
  * @author     Michael Milette
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,8 +27,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2022072100;      // The current module version (Date: YYYYMMDDXX)
+$plugin->version   = 2024091300;      // The current module version (Date: YYYYMMDDXX)
 $plugin->requires  = 2019052000;      // Requires Moodle 3.7 or later.
 $plugin->component = 'block_cmanager';
 $plugin->maturity = MATURITY_BETA;
-$plugin->release = '5.3.1';
+$plugin->release = '5.3.2';

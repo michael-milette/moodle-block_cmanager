@@ -19,7 +19,7 @@
  *
  * @package    block_cmanager
  * @copyright  2012-2014 Kyle Goslin, Daniel McSweeney (Institute of Technology Blanchardstown)
- * @copyright  2021-2022 TNG Consulting Inc.
+ * @copyright  2021-2024 TNG Consulting Inc. - {@link https://www.tngconsulting.ca}
  * @author     Kyle Goslin, Daniel McSweeney
  * @author     Michael Milette
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

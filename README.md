@@ -221,7 +221,7 @@ https://github.com/michael-milette/moodle-enrol_invitation
 
 # License
 
-Copyright © 2021-2022 TNG Consulting Inc. - https://www.tngconsulting.ca/
+Copyright © 2021-2024 TNG Consulting Inc. - {@link https://www.tngconsulting.ca}
 Copyright © 2012-2018 Kyle Goslin & Daniel McSweeney - Institute of Technology Blanchardstown
 
 This file is part of Course Request Manager for Moodle - https://moodle.org/

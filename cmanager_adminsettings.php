@@ -22,7 +22,8 @@
   *
  * @package    block_cmanager
  * @copyright  2014-2018 Kyle Goslin, Daniel McSweeney
- * @copyright  2021-2022 Michael Milette (TNG Consulting Inc.), Daniel Keaman
+ * @copyright  2021-2022 Daniel Keaman
+ * @copyright  2021-2024 TNG Consulting Inc. - {@link https://www.tngconsulting.ca}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 require_once('../../config.php');
@@ -190,7 +191,8 @@ $naming = $DB->get_field_select('block_cmanager_config', 'value', "varname = 'na
  * Main form for the admin settings
  * @package    block_cmanager
  * @copyright  2018 Kyle Goslin, Daniel McSweeney
- * @copyright  2021-2022 Michael Milette (TNG Consulting Inc.), Daniel Keaman
+ * @copyright  2021-2022 Daniel Keaman
+ * @copyright  2021-2024 TNG Consulting Inc. - {@link https://www.tngconsulting.ca}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_cmanager_adminsettings_form extends moodleform {

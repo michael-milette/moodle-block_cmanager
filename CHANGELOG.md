@@ -1,6 +1,17 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.3.2] - 2024-09-13 (BETA)
+### Added
+- Missing strings.
+- GitHub actions workflow.
+### Updated
+- Fixed logging.
+- Miscellanious bug fixes.
+- Now compatible with Moodle 4.3.
+- Tested compatible with PHP 8.1.
+- Copyright notice to include 2024.
+
 ## [5.3.1] - 2022-01-23 (BETA)
 ### Added
 - Adopted by new maintainer - Michael Milette, TNG Consulting Inc.
